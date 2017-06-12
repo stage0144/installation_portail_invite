@@ -1,0 +1,19 @@
+---
+- name: Installation des serveurs pour le Portail invite
+  hosts: serveur
+  remote_user: root
+  tasks: 
+    - name: Installation de Apache2
+       apt: name=apache2 state=latest
+       
+    - name: Installation du serveur MySQL
+       apt: name=mysql-server state=latest
+       
+    - name: Installation de phpmyadmin
+       apt: name=phpmyadmin state=latest
+       
+    - name: Installation du serveur Syslog
+       apt: name=rsyslog state=latest
+       
+    - name: Installation de OpenSSL
+       apt: name=openssl state=latest
