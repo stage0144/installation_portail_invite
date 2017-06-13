@@ -5,10 +5,12 @@
   tasks: 
     - name: Installation de Apache2
        apt: name=apache2 state=latest
+       shell: cd /var/www/html ; sudo git clone https://github.com/stage0144/Portailinvite ; cd Portailinvite ; sudo rm -r phpmailer ; sudo git clone https://github.com/PHPMailer/PHPMailer ; sudo mv PHPMailer phpmailer
        
     - name: Installation du serveur MySQL
        apt: name=mysql-server state=latest
-       
+       shell : sudo mysql -h localhost -u root < /home/charles/installation_portail_invite/bdd.sql
+
     - name: Installation de phpmyadmin
        apt: name=phpmyadmin state=latest
        
@@ -17,3 +19,8 @@
        
     - name: Installation de OpenSSL
        apt: name=openssl state=latest
+
+    - name: Installation du serveur Radius
+       apt: name=freeradius state=latest
+       apt: name=freeradius-mysql state=latest
+       apt: name=freeradius-utils state=latest
